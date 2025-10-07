@@ -1,8 +1,11 @@
 let email = document.getElementById('email');
 let password = document.getElementById('password');
-let display = document.querySelector('#tableData tbody')
+let display = document.querySelector('#tableData tbody');
+let emailError = document.getElementById('email-error');
+let passwordError = document.getElementById('password-error');
 let users = [];
 let id = null;
+
 
 const userData = () => {
     let user = {
@@ -10,7 +13,12 @@ const userData = () => {
         email: email.value,
         password: password.value,
     }
-    users.push(user);
+    if(email.value === '' && password.value === ''){
+        emailError.classList.remove('d-none');
+        passwordError.classList.remove('d-none');
+    }else{
+        users.push(user);
+    }
     displayData();
 }
 
